@@ -11,11 +11,19 @@
       (polylineClick)="polylineClick($event, hex)"
     ></map-polyline>-->
     <map-polygon
+      *ngFor="let hexagonClone of propsH3Clone.hexagons; let i = index"
+      [paths]="h3ToPolyline(hexagonClone)"
+      [options]="polygonH3OptionsClone"
+      (polygonClick)="polylineClick($event, hexagonClone,true,i)"
+    >
+    </map-polygon>
+    <map-polygon
       *ngFor="let hexagon of propsH3.hexagons"
       [paths]="h3ToPolyline(hexagon)"
       [options]="polygonH3Options"
-      (polygonClick)="polylineClick($event, hexagon)"
+      (polygonClick)="polylineClick($event, hexagon,false)"
     ></map-polygon>
+    
     <!-- <ng-container *ngFor="let position of defaultCabPositions">
       <map-marker
         [position]="position"
