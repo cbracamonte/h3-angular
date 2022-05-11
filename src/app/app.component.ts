@@ -17,12 +17,12 @@ import { MapDirectionsResponse } from '@angular/google-maps';
 })
 export class AppComponent {
   apiLoaded: Observable<boolean>;
-  options: google.maps.MapOptions = {
+  options = {
     center: { lat: -8.0969728, lng: -79.0462464 },
     zoom: 14,
   };
-  markerOptions: google.maps.MarkerOptions = { draggable: false };
-  markerPositions: google.maps.LatLngLiteral[] = [];
+  markerOptions = { draggable: false };
+  markerPositions = [];
   defaultCabPositions = [{ lat: -8.0969728, lng: -79.0462464}];
   propsH3 = {
     kringSize: 1,
@@ -34,13 +34,13 @@ export class AppComponent {
     polyline: [{ lat: 0, lng: 0 }],
   };
   propsH3Clone = { ...this.propsH3 };
-  polygonH3Options: google.maps.PolygonOptions = {
+  polygonH3Options = {
     visible: true,
     fillColor: '#2e2e2e',
     fillOpacity: 0.5,
     strokeWeight: 3
   };
-  polygonH3OptionsClone: google.maps.PolygonOptions = {
+  polygonH3OptionsClone = {
     visible: true,
     fillColor: '#a2kk22',
     fillOpacity: 0.2,
@@ -106,10 +106,6 @@ export class AppComponent {
 
   getRandomInt(max: number) {
     return Math.floor(Math.random() * Math.floor(max));
-  }
-
-  addMarker(event: google.maps.MapMouseEvent | any) {
-    this.markerPositions.push(event.latLng.toJSON());
   }
 
   polylineClick(event: any, hex: string, isClone: boolean, index?: number) {
