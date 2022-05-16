@@ -4,16 +4,11 @@
     width="750px"
     [options]="options"
   >
-    <!--<map-polyline
-      *ngFor="let hex of propsH3.hexagons"
-      [path]="h3ToPolyline(hex)"
-      (polylineClick)="polylineClick($event, hex)"
-    ></map-polyline>-->
     <map-polygon
       *ngFor="let hexagonClone of propsH3Clone.hexagons; let i = index"
       [paths]="h3ToPolyline(hexagonClone)"
       [options]="polygonH3OptionsClone"
-      (polygonClick)="polylineClick($event, hexagonClone,true,i)"
+      (polygonClick)="polylineClick($event, hexagonClone,true)"
     >
     </map-polygon>
     <map-polygon
@@ -22,13 +17,5 @@
       [options]="polygonH3Options"
       (polygonClick)="polylineClick($event, hexagon,false)"
     ></map-polygon>
-    
-    <!-- <ng-container *ngFor="let position of defaultCabPositions">
-      <map-marker
-        [position]="position"
-        [options]="markerOptions"
-      ></map-marker>
-    </ng-container>
-    -->
   </google-map>
 </div>
